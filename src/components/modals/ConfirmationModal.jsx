@@ -1,5 +1,4 @@
 import React from "react";
-import "./ConfirmationModal.css";
 
 const ConfirmationModal = ({ onStart }) => {
   return (
