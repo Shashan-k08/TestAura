@@ -10,17 +10,18 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const WarningModal = ({ isOpen, onClose, message }) => {
+const WarningModal = ({ isOpen, onClose, onReEnterFullScreen }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Warning</ModalHeader>
+        <ModalHeader>Violation Warning</ModalHeader>
         <ModalBody>
-          <Text>{message}</Text>
+          You have exited full-screen mode. Please click "OK" to re-enter
+          full-screen mode and continue the exam.
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="teal" mr={3} onClick={onClose}>
+          <Button colorScheme="blue" onClick={onReEnterFullScreen}>
             OK
           </Button>
         </ModalFooter>

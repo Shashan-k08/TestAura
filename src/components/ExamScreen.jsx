@@ -1,45 +1,63 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Heading, Button, Text } from "@chakra-ui/react";
 import Timer from "./Timer";
+import WarningModal from "./modals/WarningModal";
+import QuestionScreen from "./QuestionScreen";
 
 const ExamScreen = ({
   timerDuration,
+  questions,
   onSubmit,
   onTerminate,
   enterFullScreen,
 }) => {
   const [timer, setTimer] = useState(timerDuration);
+  const [violationCount, setViolationCount] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const timerRef = useRef(null);
 
   useEffect(() => {
     if (timer > 0) {
-      timerRef.current = setInterval(() => {
-        setTimer((prevTime) => prevTime - 1);
-      }, 1000);
+      timerRef.current = setInterval(
+        () => setTimer((prevTime) => prevTime - 1),
+        1000
+      );
     } else {
       onTerminate("Time Up");
     }
 
+    document.addEventListener("fullscreenchange", handleFullScreenExit);
     return () => {
       clearInterval(timerRef.current);
+      document.removeEventListener("fullscreenchange", handleFullScreenExit);
     };
   }, [timer]);
 
+  const handleFullScreenExit = () => {
+    if (!document.fullscreenElement) {
+      if (violationCount === 0) {
+        setIsModalOpen(true);
+        setViolationCount(1);
+      } else if (violationCount === 1) {
+        onTerminate("Terminated due to multiple violations.");
+      }
+    }
+  };
+
+  const handleReEnterFullScreen = () => {
+    enterFullScreen();
+    setIsModalOpen(false);
+  };
+
   return (
-    <Box textAlign="center" p={10}>
-      <Heading mb={6} color="teal.500">
-        Exam in Progress
-      </Heading>
+    <div className="exam-screen">
       <Timer time={timer} />
-      <Button
-        colorScheme="red"
-        size="lg"
-        mt={6}
-        onClick={() => onSubmit("Submitted")}
-      >
-        Submit Exam
-      </Button>
-    </Box>
+      <QuestionScreen questions={questions} onSubmit={onSubmit} />
+      <WarningModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onReEnterFullScreen={handleReEnterFullScreen}
+      />
+    </div>
   );
 };
 

@@ -1,40 +1,35 @@
 import React, { useState } from "react";
-import { ChakraProvider, Container } from "@chakra-ui/react";
 import ExamScreen from "./components/ExamScreen";
+import "./App.css";
+import ConfirmationModal from "./components/modals/ConfirmationModal";
+import Report from "./components/Report";
 import TestSelection from "./components/TestSelection";
-import QuestionScreen from "./components/QuestionScreen";
-import WarningModal from "./components/modals/WarningModal";
-import { testData } from "./data";
+import { ChakraProvider } from "@chakra-ui/react";
+import { testData } from "./components/data/testData";
 
 function App() {
   const [examStarted, setExamStarted] = useState(false);
-  const [selectedTest, setSelectedTest] = useState(null);
+  const [selectedTest, setSelectedTest] = useState("");
   const [examStatus, setExamStatus] = useState("");
-  const [showWarning, setShowWarning] = useState(false);
-  const [warningMessage, setWarningMessage] = useState("");
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const timerDuration = 600;
 
   const startExam = () => {
+    setShowConfirmation(false);
     setExamStarted(true);
+    enterFullScreen();
   };
 
   const enterFullScreen = () => {
     const elem = document.documentElement;
     if (elem.requestFullscreen) {
       elem.requestFullscreen().catch((err) => {
-        setWarningMessage(
-          "Full-screen permission denied. Please check browser settings."
-        );
-        setShowWarning(true);
+        console.error("Full-screen request failed:", err);
+        alert("Full-screen permission denied. Please check browser settings.");
       });
     } else {
-      setWarningMessage("Full-screen mode is not supported by this browser.");
-      setShowWarning(true);
+      console.error("Full-screen mode is not supported by this browser.");
     }
-  };
-
-  const handleTestSelection = (test) => {
-    setSelectedTest(test);
   };
 
   const handleSubmit = (status) => {
@@ -42,35 +37,41 @@ function App() {
     setExamStarted(false);
   };
 
+  const handleTerminate = (status) => {
+    setExamStatus(status);
+    setExamStarted(false);
+  };
+
   const resetExam = () => {
     setExamStatus("");
-    setSelectedTest(null);
+    setSelectedTest("");
+    setShowConfirmation(false);
+  };
+
+  const handleTestSelect = (test) => {
+    setSelectedTest(test);
+    setShowConfirmation(true);
   };
 
   return (
     <ChakraProvider>
-      <Container maxW="container.md">
+      <div className="App">
         {!selectedTest ? (
-          <TestSelection onSelectTest={handleTestSelection} />
-        ) : !examStarted ? (
+          <TestSelection onSelectTest={handleTestSelect} />
+        ) : showConfirmation ? (
+          <ConfirmationModal onStart={startExam} />
+        ) : examStatus === "" ? (
           <ExamScreen
             timerDuration={timerDuration}
+            questions={testData[selectedTest]}
             onSubmit={handleSubmit}
+            onTerminate={handleTerminate}
             enterFullScreen={enterFullScreen}
           />
         ) : (
-          <QuestionScreen
-            questions={testData[selectedTest]}
-            onSubmit={handleSubmit}
-          />
+          <Report examStatus={examStatus} onRestart={resetExam} />
         )}
-
-        <WarningModal
-          isOpen={showWarning}
-          onClose={() => setShowWarning(false)}
-          message={warningMessage}
-        />
-      </Container>
+      </div>
     </ChakraProvider>
   );
 }
