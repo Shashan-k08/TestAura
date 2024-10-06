@@ -39,7 +39,12 @@ const ExamScreen = ({ timerDuration, onSubmit, onViolation, onTerminate }) => {
   const enterFullScreen = () => {
     const elem = document.documentElement;
     if (elem.requestFullscreen) {
-      elem.requestFullscreen();
+      elem.requestFullscreen().catch((err) => {
+        console.error("Full-screen request failed:", err);
+        alert("Full-screen permission denied. Please check browser settings.");
+      });
+    } else {
+      console.error("Full-screen mode is not supported by this browser.");
     }
   };
 

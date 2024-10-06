@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ExamScreen from "./components/examscreen/ExamScreen";
 import "./App.css";
+import ConfirmationModal from "./components/confirmation_modal/ConfirmationModal";
+import Report from "./components/report/Report";
 
 function App() {
   const [examStarted, setExamStarted] = useState(false);
@@ -34,12 +36,18 @@ function App() {
 
   return (
     <div className="App">
-      <ExamScreen
-        timerDuration={timerDuration}
-        onSubmit={handleSubmit}
-        onViolation={handleViolation}
-        onTerminate={handleTerminate}
-      />
+      {showConfirmation ? (
+        <ConfirmationModal onStart={startExam} />
+      ) : examStatus === "" ? (
+        <ExamScreen
+          timerDuration={timerDuration}
+          onSubmit={handleSubmit}
+          onViolation={handleViolation}
+          onTerminate={handleTerminate}
+        />
+      ) : (
+        <Report examStatus={examStatus} onRestart={resetExam} />
+      )}
     </div>
   );
 }
