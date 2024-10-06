@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ExamScreen.css';
-
+import Timer from '../timer/Timer';
 const ExamScreen = ({ timerDuration, onSubmit, onViolation, onTerminate }) => {
   const [timer, setTimer] = useState(timerDuration);
   const [violationCount, setViolationCount] = useState(0);
@@ -46,6 +46,7 @@ const ExamScreen = ({ timerDuration, onSubmit, onViolation, onTerminate }) => {
   return (
     <div className="exam-screen">
       <h1>Exam is in Progress</h1>
+      <Timer time={timer} />
       <button className="submit-btn" onClick={() => onSubmit('Submitted')}>Submit Exam</button>
     </div>
   );
