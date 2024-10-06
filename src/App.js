@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ChakraProvider, Container } from "@chakra-ui/react";
-import ExamScreen from "./components/examscreen/ExamScreen";
-import TestSelection from "./components/testselection/TestSelection";
-import QuestionScreen from "./components/questions/QuestionScreen";
-import WarningModal from "./components/warning_modal/WarningModal";
+import ExamScreen from "./components/ExamScreen";
+import TestSelection from "./components/TestSelection";
+import QuestionScreen from "./components/QuestionScreen";
+import WarningModal from "./components/modals/WarningModal";
 import { testData } from "./data";
 
 function App() {
