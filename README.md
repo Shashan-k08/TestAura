@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Full-Screen Exam Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Full-Screen Exam Platform built using **React**. The platform allows users to take multiple-choice tests in subjects such as **HTML**, **CSS**, and **ReactJS**, with each test containing 10 questions. Users can navigate between questions, select answers, and submit their exam to see their final score.
 
-## Available Scripts
+**Deployment Link** :- https://shashank-vcriate.netlify.app/
 
-In the project directory, you can run:
+## **Features**
 
-### `npm start`
+- **Multiple Tests**: HTML, CSS, and ReactJS, each containing 10 questions.
+- **Question Navigation**: Previous and Next buttons to navigate between questions.
+- **Answer Selection**: Users can select one option from a list of multiple-choice answers.
+- **Score Calculation**: The platform calculates the user's score based on their correct answers and displays it upon submission.
+- **Timer**: Time limit to complete the test (if implemented).
+- **Report Generation**: Displays the user’s score in the report after submission.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Installation Instructions**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Follow these steps to install and run the application locally.
 
-### `npm test`
+### **Prerequisites**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure you have the following installed on your machine:
 
-### `npm run build`
+- **Node.js** (version 12 or later)
+- **npm** or **yarn** (Node package managers)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Clone the Repository**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/Shashan-k08/VCriate
+cd VCriate
+Install Dependencies
+Install the required dependencies using npm or yarn:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+# With npm
+npm install
 
-### `npm run eject`
+# Or with yarn
+yarn install
+Starting the Application
+Once the dependencies are installed, you can start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy code
+# With npm
+npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Or with yarn
+yarn start
+This will start the application on http://localhost:3000/. 
+You can now open this URL in your browser to use the platform.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Usage
+Select a Test:    Choose a test from the available subjects (HTML, CSS, or ReactJS).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Answer Questions: Navigate between questions using the Previous and Next buttons. Select an answer by clicking on one of the multiple-choice options.
 
-## Learn More
+Submit the Test:   After completing the last question, click the Submit Exam button to submit your answers.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+View Score:       Upon submission, the platform will calculate your score and display it in the report.

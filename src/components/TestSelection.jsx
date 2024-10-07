@@ -5,7 +5,7 @@ const TestSelection = ({ onSelectTest }) => {
   return (
     <Box
       textAlign="center"
-      style={{ display: "flex", flexDirection: "column", marginTop: "12rem" }}
+      style={{ display: "flex", flexDirection: "column", marginTop: "10.5rem" }}
       p={10}
     >
       <Heading mb={6} fontSize={21} opacity={0.7}>
