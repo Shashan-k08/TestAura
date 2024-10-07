@@ -87,11 +87,9 @@ const QuestionScreen = ({ questions, onSubmit, score, setScore }) => {
         </Button>
       </Stack>
 
-      {currentQuestionIndex === questions.length - 1 && (
-        <button className="submit-btn" onClick={handleSubmit}>
-          Submit Exam
-        </button>
-      )}
+      <button className="submit-btn" onClick={handleSubmit}>
+        Submit Exam
+      </button>
     </Box>
   );
 };
