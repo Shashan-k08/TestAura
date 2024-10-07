@@ -6,6 +6,7 @@ import Report from "./components/Report";
 import TestSelection from "./components/TestSelection";
 import { ChakraProvider } from "@chakra-ui/react";
 import { testData } from "./components/data/testData";
+import Header from "./components/Header";
 
 function App() {
   const [examStarted, setExamStarted] = useState(false);
@@ -56,6 +57,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App">
+        <Header/>
         {!selectedTest ? (
           <TestSelection onSelectTest={handleTestSelect} />
         ) : showConfirmation ? (

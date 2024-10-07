@@ -45,7 +45,7 @@ const QuestionScreen = ({ questions, onSubmit }) => {
         <Button colorScheme="teal" onClick={nextQuestion} isDisabled={currentQuestionIndex === questions.length - 1}>Next</Button>
       </Stack>
 
-      <Button colorScheme="red" mt={8} size="lg" onClick={handleSubmit} width="full">Submit Exam</Button>
+      <button className="submit-btn"  onClick={handleSubmit} >Submit Exam</button>
     </Box>
   );
 };
