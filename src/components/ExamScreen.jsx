@@ -9,6 +9,8 @@ const ExamScreen = ({
   onSubmit,
   onTerminate,
   enterFullScreen,
+  score,
+  setScore,
 }) => {
   const [timer, setTimer] = useState(timerDuration);
   const [violationCount, setViolationCount] = useState(0);
@@ -30,6 +32,7 @@ const ExamScreen = ({
       clearInterval(timerRef.current);
       document.removeEventListener("fullscreenchange", handleFullScreenExit);
     };
+    // eslint-disable-next-line
   }, [timer]);
 
   const handleFullScreenExit = () => {
@@ -51,7 +54,12 @@ const ExamScreen = ({
   return (
     <div className="exam-screen">
       <Timer time={timer} />
-      <QuestionScreen questions={questions} onSubmit={onSubmit} />
+      <QuestionScreen
+        questions={questions}
+        onSubmit={onSubmit}
+        score={score}
+        setScore={setScore}
+      />
       <WarningModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

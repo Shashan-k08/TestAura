@@ -7,7 +7,6 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Text,
 } from "@chakra-ui/react";
 
 const WarningModal = ({ isOpen, onClose, onReEnterFullScreen }) => {

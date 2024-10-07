@@ -13,7 +13,7 @@ const Timer = ({ time }) => {
       position="fixed"
       top="7rem"
       right="10px"
-      bg="gray.700"
+      bg="#7b7e83"
       color="white"
       p={3}
       borderRadius="md"

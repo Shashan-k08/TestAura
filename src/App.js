@@ -9,16 +9,20 @@ import { testData } from "./components/data/testData";
 import Header from "./components/Header";
 
 function App() {
+  // eslint-disable-next-line 
   const [examStarted, setExamStarted] = useState(false);
   const [selectedTest, setSelectedTest] = useState("");
   const [examStatus, setExamStatus] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [score, setScore] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
   const timerDuration = 600;
 
   const startExam = () => {
     setShowConfirmation(false);
     setExamStarted(true);
     enterFullScreen();
+    setScore(0);
   };
 
   const enterFullScreen = () => {
@@ -34,7 +38,10 @@ function App() {
   };
 
   const handleSubmit = (status) => {
+    console.log(score);
     setExamStatus(status);
+    setScore(score);
+    setTotalQuestions(testData[selectedTest].length);
     setExamStarted(false);
   };
 
@@ -57,7 +64,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App">
-        <Header/>
+        <Header />
         {!selectedTest ? (
           <TestSelection onSelectTest={handleTestSelect} />
         ) : showConfirmation ? (
@@ -67,11 +74,18 @@ function App() {
             timerDuration={timerDuration}
             questions={testData[selectedTest]}
             onSubmit={handleSubmit}
+            score={score}
+            setScore={setScore}
             onTerminate={handleTerminate}
             enterFullScreen={enterFullScreen}
           />
         ) : (
-          <Report examStatus={examStatus} onRestart={resetExam} />
+          <Report
+            examStatus={examStatus}
+            totalQuestions={totalQuestions}
+            score={score}
+            onRestart={resetExam}
+          />
         )}
       </div>
     </ChakraProvider>
