@@ -11,7 +11,7 @@ const Timer = ({ time }) => {
   return (
     <Box
       position="fixed"
-      top="10px"
+      top="7rem"
       right="10px"
       bg="gray.700"
       color="white"

@@ -3,31 +3,24 @@ import { Box, Heading, Button, VStack } from "@chakra-ui/react";
 
 const TestSelection = ({ onSelectTest }) => {
   return (
-    <Box textAlign="center" p={10}>
-      <Heading mb={6} color="teal.500">
-        Select a Test
+    <Box
+      textAlign="center"
+      style={{ display: "flex", flexDirection: "column", marginTop: "2rem" }}
+      p={10}
+    >
+      <Heading mb={6} fontSize={21} opacity={0.7}>
+        Evaluate your knowledge and understanding about Front-end Stacks by
+        selecting a Test.
       </Heading>
-      <VStack spacing={4}>
-        <Button
-          colorScheme="teal"
-          size="lg"
-          onClick={() => onSelectTest("html")}
-        >
-          HTML Test
+      <VStack  marginTop="4rem"gap="5rem" justifyContent="center" flexDirection="row">
+        <Button size="lg" onClick={() => onSelectTest("html")}>
+          HTML MCQs
         </Button>
-        <Button
-          colorScheme="blue"
-          size="lg"
-          onClick={() => onSelectTest("reactjs")}
-        >
-          ReactJS Test
+        <Button size="lg" onClick={() => onSelectTest("reactjs")}>
+          ReactJS MCQs
         </Button>
-        <Button
-          colorScheme="purple"
-          size="lg"
-          onClick={() => onSelectTest("css")}
-        >
-          CSS Test
+        <Button size="lg" onClick={() => onSelectTest("css")}>
+          CSS MCQs
         </Button>
       </VStack>
     </Box>

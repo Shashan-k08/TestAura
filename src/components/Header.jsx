@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="header active">
+      <header className="header">
         <div className="container d_flex">
           <div className="logo">
             VCriate <b>.</b>

@@ -32,8 +32,9 @@ body {
 }
 
 header {
-  height: 10vh;
+  height: 12vh;
   line-height: 10vh;
+  box-shadow: -1px 11px 24px -11px rgba(0, 0, 0, 0.75);
 }
 header .container {
   padding-top: 15px;
@@ -184,9 +185,9 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 35px;
 }
-p {
+/* p {
   color: #3c3e41;
-}
+} */
 .text-center {
   text-align: center;
 }
@@ -210,7 +211,8 @@ input {
 .modal {
   background-color: white;
   border-radius: 10px;
-  padding: 40px;
+  padding: 83px;
+  margin: 13% 30%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -256,6 +258,7 @@ input {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-top: 10rem;
 }
 
 .restart-btn {

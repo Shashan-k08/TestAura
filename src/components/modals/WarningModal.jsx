@@ -15,7 +15,7 @@ const WarningModal = ({ isOpen, onClose, onReEnterFullScreen }) => {
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Violation Warning</ModalHeader>
+        <ModalHeader boxShadow="none">Violation Warning</ModalHeader>
         <ModalBody>
           You have exited full-screen mode. Please click "OK" to re-enter
           full-screen mode and continue the exam.
