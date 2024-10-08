@@ -9,7 +9,7 @@ import { testData } from "./components/data/testData";
 import Header from "./components/Header";
 
 function App() {
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const [examStarted, setExamStarted] = useState(false);
   const [selectedTest, setSelectedTest] = useState("");
   const [examStatus, setExamStatus] = useState("");
@@ -37,10 +37,9 @@ function App() {
     }
   };
 
-  const handleSubmit = (status) => {
-    console.log(score);
+  const handleSubmit = (status, marks) => {
     setExamStatus(status);
-    setScore(score);
+    setScore(marks);
     setTotalQuestions(testData[selectedTest].length);
     setExamStarted(false);
   };

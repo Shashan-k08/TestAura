@@ -10,7 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-const QuestionScreen = ({ questions, onSubmit, score, setScore }) => {
+const QuestionScreen = ({ questions, onSubmit }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
@@ -19,10 +19,6 @@ const QuestionScreen = ({ questions, onSubmit, score, setScore }) => {
     const updatedAnswers = [...userAnswers];
     updatedAnswers[currentQuestionIndex] = selectedOption;
     setUserAnswers(updatedAnswers);
-
-    if (parseInt(selectedOption) === questions[currentQuestionIndex].correct) {
-      setScore(score + 1);
-    }
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -42,11 +38,14 @@ const QuestionScreen = ({ questions, onSubmit, score, setScore }) => {
     updatedAnswers[currentQuestionIndex] = selectedOption;
     setUserAnswers(updatedAnswers);
 
-    if (parseInt(selectedOption) === questions[currentQuestionIndex].correct) {
-      setScore(score + 1); // Increment score if correct
-    }
+    let finalScore = 0;
+    updatedAnswers.forEach((answer, index) => {
+      if (parseInt(answer) === questions[index].correct) {
+        finalScore += 1;
+      }
+    });
 
-    onSubmit("Submitted");
+    onSubmit("Submitted", finalScore);
   };
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -70,7 +69,7 @@ const QuestionScreen = ({ questions, onSubmit, score, setScore }) => {
         </VStack>
       </RadioGroup>
 
-      <Stack direction="row" justify="space-between" mt={8}>
+      <Stack direction="row" marginTop="9rem" justify="space-between" mt={8}>
         <Button
           colorScheme="teal"
           onClick={prevQuestion}

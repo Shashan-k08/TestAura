@@ -166,7 +166,7 @@ a {
   text-decoration: none; /* links looks nice */
   color: black;
 }
-li {
+.header li {
   /* removes list icon */
   list-style: none;
 }
@@ -212,7 +212,7 @@ input {
   background-color: white;
   border-radius: 10px;
   padding: 83px;
-  margin: 13% 30%;
+  margin: 13% 26%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
