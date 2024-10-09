@@ -59,6 +59,7 @@ const ExamScreen = ({
         onSubmit={onSubmit}
         score={score}
         setScore={setScore}
+        onTerminate={onTerminate}
       />
       <WarningModal
         isOpen={isModalOpen}
